@@ -102,7 +102,7 @@ export default function RegisterFold() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/users/createPatient",
+        `${import.meta.env.VITE_ENDPOINT}/users/createPatient`,
         patientData
       );
       console.log(response);

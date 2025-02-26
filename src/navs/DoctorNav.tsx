@@ -15,7 +15,7 @@ export default function DoctorNav() {
   const handleLogout = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/users/logout",
+        `${import.meta.env.VITE_ENDPOINT}/users/logout`,
         {},
         {
           withCredentials: true,

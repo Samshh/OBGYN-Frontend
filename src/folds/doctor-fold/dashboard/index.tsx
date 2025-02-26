@@ -58,7 +58,7 @@ export default function Dashboard() {
   const getPatientByID = async (patientID: number) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/users/getPatient/${patientID}`
+        `${import.meta.env.VITE_ENDPOINT}/users/getPatient/${patientID}`
       );
       return response.data;
     } catch (error) {
@@ -75,7 +75,7 @@ export default function Dashboard() {
       console.log("Update data:", updatedData);
 
       const response = await axios.post(
-        `http://localhost:3000/users/updateAppointment/${AppointmentID}`,
+        `${import.meta.env.VITE_ENDPOINT}/users/updateAppointment/${AppointmentID}`,
         updatedData
       );
       console.log("Updated appointment:", response.data);
@@ -88,7 +88,7 @@ export default function Dashboard() {
   const getAppointemntData = useCallback(async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/users/getAppointments"
+        `${import.meta.env.VITE_ENDPOINT}/users/getAppointments`
       );
       const appointments: Appointment[] = response.data;
 
@@ -186,7 +186,7 @@ export default function Dashboard() {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/users/createAppointment/${selectedAppointment?.PatientID}`,
+        `${import.meta.env.VITE_ENDPOINT}/users/createAppointment/${selectedAppointment?.PatientID}`,
         appointmentData
       );
       if (response.status === 201) {

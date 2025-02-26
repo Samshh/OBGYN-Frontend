@@ -23,7 +23,7 @@ export default function Profile() {
     const getProfile = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/users/getAdmin",
+          `${import.meta.env.VITE_ENDPOINT}/users/getAdmin`,
           {}
         );
         const data = response.data;

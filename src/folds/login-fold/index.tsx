@@ -22,8 +22,8 @@ export default function LoginFold() {
       UserPassword: password,
     };
 
-    const doctorEndpoint = "http://localhost:3000/users/loginAdmin";
-    const patientEndpoint = "http://localhost:3000/users/loginPatient";
+    const doctorEndpoint = `${import.meta.env.VITE_ENDPOINT}/users/loginAdmin`;
+    const patientEndpoint = `${import.meta.env.VITE_ENDPOINT}/users/loginPatient`;
 
     try {
       // Attempt Doctor login
@@ -64,7 +64,7 @@ export default function LoginFold() {
   const checkAuth = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/users/auth",
+        `${import.meta.env.VITE_ENDPOINT}/users/auth`,
         {},
         {
           withCredentials: true,
@@ -88,7 +88,7 @@ export default function LoginFold() {
     const checkAuth = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/users/auth",
+          `${import.meta.env.VITE_ENDPOINT}/users/auth`,
           {},
           {
             withCredentials: true,

@@ -51,7 +51,7 @@ export default function Userdata() {
 
   const getPatientByID = async (patientID: number) => {
     try {
-      const response = await axios.get(`http://localhost:3000/users/getPatient/${patientID}`);
+      const response = await axios.get(`${import.meta.env.VITE_ENDPOINT}/users/getPatient/${patientID}`);
       console.log("Fetched patient data: ", response.data); // Log fetched patient data
       return response.data;
     } catch (error) {
@@ -61,7 +61,7 @@ export default function Userdata() {
 
   const getAppointemntData = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:3000/users/getAppointments");
+      const response = await axios.get(`${import.meta.env.VITE_ENDPOINT}/users/getAppointments`);
       console.log("Fetched appointment data: ", response.data); // Log fetched appointment data
       const appointments: Appointment[] = response.data;
 
@@ -87,7 +87,7 @@ export default function Userdata() {
 
   const getPatients = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:3000/users/getPatients");
+      const response = await axios.get(`${import.meta.env.VITE_ENDPOINT}/users/getPatients`);
       console.log("Fetched patients data: ", response.data); // Log fetched patients data
       setPatients(response.data);
     } catch (error) {

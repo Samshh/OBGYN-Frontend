@@ -11,7 +11,7 @@ export default function PatientLayout() {
     const checkAuth = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/users/auth",
+          `${import.meta.env.VITE_ENDPOINT}/users/auth`,
           {},
           {
             withCredentials: true,

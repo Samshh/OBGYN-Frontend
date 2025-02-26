@@ -111,7 +111,7 @@ export default function Dashboard() {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/users/createAppointment/${PatientID}`,
+        `${import.meta.env.VITE_ENDPOINT}/users/createAppointment/${PatientID}`,
         appointmentData
       );
       if (response.status === 201) {
@@ -133,7 +133,7 @@ export default function Dashboard() {
     if (currentAppointment) {
       try {
         const response = await axios.post(
-          `http://localhost:3000/users/updateAppointment/${currentAppointment.AppointmentID}`,
+          `${import.meta.env.VITE_ENDPOINT}/users/updateAppointment/${currentAppointment.AppointmentID}`,
           { StatusID: 3 }
         );
         if (response.status === 200) {
@@ -184,7 +184,7 @@ export default function Dashboard() {
     const getPatientAppointments = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/users/getPatientAppointments/${PatientID}`
+          `${import.meta.env.VITE_ENDPOINT}/users/getPatientAppointments/${PatientID}`
         );
         if (response.data && response.data.length > 0) {
           const now = new Date();

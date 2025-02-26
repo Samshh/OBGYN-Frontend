@@ -68,7 +68,7 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
         EmailAddress: emailAddress,
       };
       await axios.post(
-        `http://localhost:3000/users/updatePatient/${PatientID}`,
+        `${import.meta.env.VITE_ENDPOINT}/users/updatePatient/${PatientID}`,
         updatedProfile
       );
       console.log("Updated Profile: ", updatedProfile);

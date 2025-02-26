@@ -34,7 +34,7 @@ export default function Profile() {
       if (PatientID) {
         try {
           const response = await axios.get(
-            `http://localhost:3000/users/getPatient/${PatientID}`
+            `${import.meta.env.VITE_ENDPOINT}/users/getPatient/${PatientID}`
           );
           const data = response.data;
           console.log("Fetched data: ", data);
