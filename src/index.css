@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-black font-main antialiased flex flex-col items-center justify-center;
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    @apply overflow-x-hidden;
+  }
+
+  /* Overflow Debugger */
+  /* * {
+    @apply !bg-green-500/10;
+  } */
+
+  /* Typography */
+
+  h1 {
+    @apply font-bold text-[2.5rem] md:text-[3rem] leading-tight;
+  }
+
+  h2 {
+    @apply font-semibold text-[2rem] md:text-[2.5rem] leading-tight;
+  }
+
+  h3 {
+    @apply font-normal text-[1.5rem] md:text-[2rem];
+  }
+
+  p {
+    @apply font-normal text-[0.85rem] md:text-[1.25rem];
+  }
+
+  em {
+    font-style: normal;
+    @apply text-accent;
+  }
+
+  /* Layout */
+
+  section {
+    @apply p-[1rem] max-w-[1280px] w-full mx-auto flex-grow flex flex-col h-auto;
+  }
+  
+  #root {
+    @apply relative h-screen flex flex-col;
+  }
+
+  /* Navs */
+
+  #nav {
+    @apply max-w-[1280px] p-[1rem] mx-auto flex justify-between items-center bg-white;
+  }
+
+  #innerNavContainer {
+    @apply max-w-[1280px] p-[0.5rem] mx-auto flex justify-center items-center bg-white border border-border w-fit rounded-lg gap-[0.5rem] pointer-events-auto;
+  }
+
+  nav {
+    @apply sticky z-50 w-screen;
+  }
+
+  .homeNav {
+    @apply top-0;
+  }
+
+  .innerNav {
+    @apply bottom-0 justify-center items-center p-[1rem] pointer-events-none;
+  }
+
+  /* Buttons */
+
+  button {
+    @apply font-medium text-[0.85rem] md:text-[1.25rem] py-2 px-4 rounded-md border border-border bg-white hover:bg-accent hover:text-white hover:border-accent transition-colors duration-200 ease-in-out disabled:pointer-events-none disabled:text-white disabled:bg-accent disabled:opacity-50 disabled:border-accent h-fit uppercase;
+  }
+
+  .specialButton {
+    @apply font-medium text-[0.85rem] md:text-[1.25rem] py-2 px-4 rounded-md border text-white border-accent bg-accent hover:bg-white hover:text-accent transition-colors duration-200 ease-in-out disabled:pointer-events-none disabled:opacity-50 h-fit uppercase;
+  }
+
+  .innerNavButton {
+    @apply disabled:pointer-events-none disabled:text-white disabled:bg-accent border-0;
+  }
+
+  .Icon {
+    @apply text-[1.5rem] md:text-[2rem];
+  }
+
+
+  /* Forms */
+
+  #homeForm {
+    @apply flex flex-col gap-[2rem] w-full max-w-[480px];
+  }
+
+  label {
+    @apply font-medium text-[0.85rem] md:text-[1.25rem];
+  }
+
+  input {
+    @apply font-normal text-[0.85rem] md:text-[1.25rem] py-2 px-4 rounded-md border border-border bg-white focus:outline-none focus:border-accent;
+  }
+
+  select {
+    @apply font-normal text-[0.85rem] md:text-[1.25rem] py-2 px-4 rounded-md border border-border bg-white focus:outline-none focus:border-accent;
+  }
+}
+
+:root {
+  --font-main: "Poppins";
+  --accent-color: #03bf67;
+  --black-color: #161616;
+  --white-color: #ffffff;
+  --border-color: #d9d9d9;
+}
