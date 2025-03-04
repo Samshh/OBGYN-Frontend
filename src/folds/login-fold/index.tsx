@@ -88,7 +88,7 @@ export default function LoginFold() {
   };
 
   useEffect(() => {
-    console.log(localStorage.getItem("token"));
+    
     const checkAuth = async () => {
       try {
         const response = await axios.post(
