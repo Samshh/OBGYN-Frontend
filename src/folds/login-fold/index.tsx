@@ -128,7 +128,7 @@ export default function LoginFold() {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="samshh"
+                placeholder="sam@email.com"
                 value={email}
                 onChange={handleChange(setEmail)}
               />
