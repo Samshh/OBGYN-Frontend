@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -64,8 +65,7 @@ export default function LoginFold() {
   };
 
   const checkAuth = async () => {
-    const token = localStorage.getItem("token");
-    console.log("Token from Local Storage:", token);
+
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_ENDPOINT}/users/auth`,
@@ -73,7 +73,7 @@ export default function LoginFold() {
         {
           withCredentials: true,
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${Cookies.get("token")}`,
           },
         }
       );
@@ -93,8 +93,6 @@ export default function LoginFold() {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem("token");
-      console.log("Token from Local Storage:", token);
       try {
         const response = await axios.post(
           `${import.meta.env.VITE_ENDPOINT}/users/auth`,
@@ -102,7 +100,7 @@ export default function LoginFold() {
           {
             withCredentials: true,
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${Cookies.get("token")}`,
             },
           }
         );

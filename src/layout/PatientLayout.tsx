@@ -3,14 +3,13 @@ import TitleHandler from "@/TitleHandler";
 import { Outlet, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 export default function PatientLayout() {
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem("token");
-      console.log("Token from Local Storage:", token);
       try {
         const response = await axios.post(
           `${import.meta.env.VITE_ENDPOINT}/users/auth`,
@@ -18,7 +17,7 @@ export default function PatientLayout() {
           {
             withCredentials: true,
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${Cookies.get("token")}`,
             },
           }
         );
