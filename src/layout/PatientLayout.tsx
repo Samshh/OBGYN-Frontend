@@ -3,7 +3,6 @@ import TitleHandler from "@/TitleHandler";
 import { Outlet, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
-import Cookies from "js-cookie";
 
 export default function PatientLayout() {
   const navigate = useNavigate();
@@ -16,9 +15,6 @@ export default function PatientLayout() {
           {},
           {
             withCredentials: true,
-            headers: {
-              Authorization: `Bearer ${Cookies.get("token")}`,
-            },
           }
         );
         const data = await response.data;

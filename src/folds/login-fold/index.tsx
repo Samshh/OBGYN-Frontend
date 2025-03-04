@@ -1,5 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie";
 import { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -72,9 +71,6 @@ export default function LoginFold() {
         {},
         {
           withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${Cookies.get("token")}`,
-          },
         }
       );
       const data = response.data;
@@ -99,9 +95,6 @@ export default function LoginFold() {
           {},
           {
             withCredentials: true,
-            headers: {
-              Authorization: `Bearer ${Cookies.get("token")}`,
-            },
           }
         );
         const data = await response.data;
