@@ -68,6 +68,9 @@ export default function LoginFold() {
         {},
         {
           withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
         }
       );
       const data = response.data;

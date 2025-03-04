@@ -15,6 +15,9 @@ export default function PatientLayout() {
           {},
           {
             withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
           }
         );
         const data = await response.data;
