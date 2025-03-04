@@ -8,8 +8,9 @@ export default function DoctorLayout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
     const checkAuth = async () => {
+      const token = localStorage.getItem("token");
+      console.log("Token from Local Storage:", token);
       try {
         const response = await axios.post(
           `${import.meta.env.VITE_ENDPOINT}/users/auth`,
@@ -18,7 +19,7 @@ export default function DoctorLayout() {
             withCredentials: true,
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
-            }
+            },
           }
         );
         const data = await response.data;

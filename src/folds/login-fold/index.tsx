@@ -23,7 +23,9 @@ export default function LoginFold() {
     };
 
     const doctorEndpoint = `${import.meta.env.VITE_ENDPOINT}/users/loginAdmin`;
-    const patientEndpoint = `${import.meta.env.VITE_ENDPOINT}/users/loginPatient`;
+    const patientEndpoint = `${
+      import.meta.env.VITE_ENDPOINT
+    }/users/loginPatient`;
 
     try {
       // Attempt Doctor login
@@ -60,8 +62,10 @@ export default function LoginFold() {
       throw new Error("Login failed for both Doctor and Patient");
     }
   };
-  
+
   const checkAuth = async () => {
+    const token = localStorage.getItem("token");
+    console.log("Token from Local Storage:", token);
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_ENDPOINT}/users/auth`,
@@ -70,7 +74,7 @@ export default function LoginFold() {
           withCredentials: true,
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-          }
+          },
         }
       );
       const data = response.data;
@@ -88,8 +92,9 @@ export default function LoginFold() {
   };
 
   useEffect(() => {
-    
     const checkAuth = async () => {
+      const token = localStorage.getItem("token");
+      console.log("Token from Local Storage:", token);
       try {
         const response = await axios.post(
           `${import.meta.env.VITE_ENDPOINT}/users/auth`,
@@ -98,7 +103,7 @@ export default function LoginFold() {
             withCredentials: true,
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
-            }
+            },
           }
         );
         const data = await response.data;
