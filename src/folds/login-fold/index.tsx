@@ -99,9 +99,9 @@ export default function LoginFold() {
         );
         const data = await response.data;
 
-        if (data && data.user.TypeIs === 1) {
+        if (data && data.TypeIs === 1) {
           navigate("/doctor");
-        } else if (data && data.user.TypeIs === 2) {
+        } else if (data && data.TypeIs === 2) {
           navigate("/patient");
         } else {
           console.log("Invalid User");
