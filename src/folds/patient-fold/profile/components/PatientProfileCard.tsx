@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 interface PatientProfile {
   PatientID: number;
@@ -36,11 +35,24 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
   const [PatientID, setPatientId] = useState<number | null>(null);
 
   useEffect(() => {
-    const patientIdCookie = Cookies.get("PatientID");
-    console.log("PatientID cookie value: ", patientIdCookie);
-    const id = parseInt(patientIdCookie || "0", 10);
-    setPatientId(id);
-    console.log("Parsed PatientID: ", id);
+    const checkAuth = async () => {
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_ENDPOINT}/users/auth`,
+          {},
+          {
+            withCredentials: true,
+          }
+        );
+        const data = await response.data;
+
+        setPatientId(data.PatientID);
+      } catch (error) {
+        console.log("No ID");
+      }
+    };
+
+    checkAuth();
   }, []);
 
   useEffect(() => {
