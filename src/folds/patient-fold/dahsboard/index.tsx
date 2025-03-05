@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
 import DashCard from "../../../UI/DashCard";
 import Modal from "../../../UI/Modal";
 
