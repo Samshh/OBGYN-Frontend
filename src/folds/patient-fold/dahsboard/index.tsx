@@ -173,11 +173,24 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    const patientIdCookie = Cookies.get("PatientID");
-    console.log("PatientID cookie value: ", patientIdCookie);
-    const id = parseInt(patientIdCookie || "0", 10);
-    setPatientId(id);
-    console.log("Parsed PatientID: ", id);
+    const checkAuth = async () => {
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_ENDPOINT}/users/auth`,
+          {},
+          {
+            withCredentials: true,
+          }
+        );
+        const data = await response.data;
+
+        setPatientId(data.PatientID);
+      } catch (error) {
+        console.log("No ID");
+      }
+    };
+
+    checkAuth();
   }, []);
 
   useEffect(() => {
