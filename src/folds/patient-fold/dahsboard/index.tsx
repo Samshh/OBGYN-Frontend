@@ -234,8 +234,8 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-col gap-[1rem]">
-      <div className="grid grid-rows-2 gap-[1rem]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 gap-[1rem]">
+      <div className="grid grid-rows-1 gap-[1rem]">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 gap-[1rem]">
           <DashCard>
             <h2>Prescription</h2>
             <h2 className="text-border">
@@ -248,7 +248,7 @@ export default function Dashboard() {
               Coming Soon<em>.</em>
             </h2>
           </DashCard>
-        </div>
+        </div> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 gap-[1rem]">
           <DashCard id="current-appointment">
             <DashCard.Title>Upcoming Appointment</DashCard.Title>
