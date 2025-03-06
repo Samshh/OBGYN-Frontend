@@ -240,11 +240,11 @@ export default function Dashboard() {
               />
             </DashCard.Content>
           </DashCard>
-          <DashCard className="items-center justify-center">
+          {/* <DashCard className="items-center justify-center">
             <h2 className="text-border">
               Coming Soon<em>.</em>
             </h2>
-          </DashCard>
+          </DashCard> */}
         </div>
       </div>
       {isModalOpen && selectedAppointment && (
