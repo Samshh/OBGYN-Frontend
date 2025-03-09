@@ -17,6 +17,7 @@ export default function Dashboard() {
     Note: "",
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [currentAppointment, setCurrentAppointment] =
     useState<Appointment | null>(null);
   const [PatientID, setPatientId] = useState<number>();
@@ -132,7 +133,9 @@ export default function Dashboard() {
     if (currentAppointment) {
       try {
         const response = await axios.post(
-          `${import.meta.env.VITE_ENDPOINT}/users/updateAppointment/${currentAppointment.AppointmentID}`,
+          `${import.meta.env.VITE_ENDPOINT}/users/updateAppointment/${
+            currentAppointment.AppointmentID
+          }`,
           { StatusID: 3 }
         );
         if (response.status === 200) {
@@ -196,7 +199,9 @@ export default function Dashboard() {
     const getPatientAppointments = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_ENDPOINT}/users/getPatientAppointments/${PatientID}`
+          `${
+            import.meta.env.VITE_ENDPOINT
+          }/users/getPatientAppointments/${PatientID}`
         );
         if (response.data && response.data.length > 0) {
           const now = new Date();
@@ -278,7 +283,9 @@ export default function Dashboard() {
                       {currentAppointment.Note}
                     </p>
                   </div>
-                  <button onClick={handleCancelAppointment}>cancel appointment</button>
+                  <button onClick={() => setIsCancelModalOpen(true)}>
+                    cancel appointment
+                  </button>
                 </div>
               ) : (
                 <p>No upcoming appointments.</p>
@@ -348,6 +355,23 @@ export default function Dashboard() {
             </button>
           </div>
         </form>
+      </Modal>
+      <Modal isOpen={isCancelModalOpen} onClose={() => setIsCancelModalOpen(false)}>
+        <div className="flex flex-col gap-[1rem]">
+          <div className="flex items-center justify-between gap-[1rem]">
+            <h3>Cancel?</h3>
+          </div>
+          <Modal.Separator />
+          <div className="flex gap-4">
+            <button onClick={handleCancelAppointment}>Confirm</button>
+            <Modal.Close
+              isOpen={isModalOpen}
+              onClose={() => setIsCancelModalOpen(false)}
+            >
+              Cancel
+            </Modal.Close>
+          </div>
+        </div>
       </Modal>
     </div>
   );

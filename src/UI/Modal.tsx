@@ -9,7 +9,7 @@ export default function Modal({ isOpen, children }: ModalProps) {
 
   return (
     <div className="fixed inset-0 flex justify-center items-center h-screen">
-      <div className="bg-white p-[1rem] border border-border rounded-md relative flex flex-col gap-[1rem] w-fit">
+      <div className="bg-white p-[1rem] border border-border rounded-md relative flex flex-col gap-[1rem] w-fit shadow-lg">
         {children}
       </div>
     </div>
