@@ -141,6 +141,7 @@ export default function Dashboard() {
         if (response.status === 200) {
           alert("Appointment cancelled successfully!");
           setCurrentAppointment(null);
+          setIsCancelModalOpen(false)
         } else {
           alert("Failed to cancel appointment.");
         }
