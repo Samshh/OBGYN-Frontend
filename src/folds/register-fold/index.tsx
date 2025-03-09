@@ -108,6 +108,7 @@ export default function RegisterFold() {
       console.log(response);
     } catch (error) {
       console.log(error);
+      alert("Email or username already exists");
     }
   };
 
